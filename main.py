@@ -1,7 +1,9 @@
 from flask import Flask
-from flask import render_template
+from flask import render_template, redirect
+from data.protection import LoginForm
 
 app = Flask(__name__)
+app.config['SECRET_KEY'] = 'yandexlyceum_secret_key'
 
 
 @app.route('/<title>')
@@ -32,6 +34,14 @@ def form_answer():
                    "motivation": "Всегда мечтал застрять на Марсе!",
                    "ready": "True"}
     return render_template("auto_answer.html", dictionary=information, title=information["title"])
+
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    form = LoginForm()
+    if form.validate_on_submit():
+        return redirect('/success')
+    return render_template('protection.html', title='Аварийный доступ', form=form)
 
 
 if __name__ == '__main__':

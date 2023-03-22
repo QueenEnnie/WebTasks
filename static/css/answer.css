@@ -1,4 +1,9 @@
 h4 {
    color: #dcdcdc;
-   padding-left: 20px
+   padding-left: 20pt
+}
+
+h1.access{
+   background: url('/static/img/MARS-2-7.png') no-repeat center left;
+   padding-left: 118pt;
 }
