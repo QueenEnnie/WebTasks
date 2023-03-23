@@ -7,3 +7,7 @@ h1.access{
    background: url('/static/img/MARS-2-7.png') no-repeat center left;
    padding-left: 118pt;
 }
+
+h2.distribution{
+   padding-left: 50pt;
+}
