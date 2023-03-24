@@ -5,7 +5,7 @@ from .db_session import SqlAlchemyBase
 from flask_login import UserMixin
 
 
-class User(SqlAlchemyBase, UserMixin):
+class User(SqlAlchemyBase):
     __tablename__ = 'users'
 
     id = sqlalchemy.Column(sqlalchemy.Integer, primary_key=True, autoincrement=True)
@@ -18,6 +18,7 @@ class User(SqlAlchemyBase, UserMixin):
     email = sqlalchemy.Column(sqlalchemy.String, nullable=True, unique=True)
     hashed_password = sqlalchemy.Column(sqlalchemy.String, nullable=True)
     modified_date = sqlalchemy.Column(sqlalchemy.DateTime, default=datetime.datetime.now)
+
     # news = orm.relationship("News", back_populates='user')
 
     # def __repr__(self):
