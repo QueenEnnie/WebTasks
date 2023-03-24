@@ -49,18 +49,9 @@ def main():
     db_session.global_init("db/blogs.db")
     # app.run()
     session = db_session.create_session()
-    captain = User(surname="Scott", name='Ridley', age=21, position='captain',
-                   speciality='research engineer', address='module_1', email='scott_chief@mars.org')
-    first_user = User(surname="Potter", name='Harry', age=19, position='colonist',
-                      speciality='doctor', address='module_2', email='potter_harry@mars.org')
-    second_user = User(surname="Eyre", name='Jane', age=25, position='colonist',
-                       speciality='pilot', address='module_3', email='eyre_jane@mars.org')
-    third_user = User(surname="Mussolini", name='Benito', age=32, position='colonist',
-                      speciality='navigator', address='module_4', email='benito@mars.org')
-    session.add(captain)
-    session.add(first_user)
-    session.add(second_user)
-    session.add(third_user)
+    job = Jobs(team_leader=1, job='deployment of residential modules 1 and 2', work_size=15,
+               collaborators='2, 3', start_date='(now)', is_finished=False)
+    session.add(job)
     session.commit()
 
 
