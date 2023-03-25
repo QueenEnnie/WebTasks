@@ -11,3 +11,31 @@ h1.access{
 h2.distribution{
    padding-left: 50pt;
 }
+
+td.cell{
+   background: #e6e6fa
+}
+
+td.finish{
+   background: #ffddf4
+}
+
+td.title{
+   width: 220pt;
+}
+
+td.leader{
+   width: 100pt;
+}
+
+td.duration{
+   width: 70pt;
+}
+
+td.members{
+   width: 100pt;
+}
+
+td.is_finished{
+   width: 100pt;
+}

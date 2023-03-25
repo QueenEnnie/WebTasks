@@ -5,6 +5,7 @@ from flask import render_template, redirect
 
 from data.users import User
 from data.jobs import Jobs
+from data.departments import Department
 
 from data.login_form import LoginForm
 from flask_login import LoginManager, login_user, login_required, logout_user
@@ -45,15 +46,21 @@ def logout():
     return redirect("/")
 
 
+@app.route("/")
+def index():
+    session = db_session.create_session()
+    all_jobs = session.query(Jobs).all()
+    users_dict = {}
+    for elem in session.query(User).all():
+        users_dict[elem.id] = elem.surname + " " + elem.name
+    return render_template("index.html", jobs=all_jobs, users=users_dict)
+
+
 def main():
     db_session.global_init("db/blogs.db")
-    # app.run()
-    session = db_session.create_session()
-    job = Jobs(team_leader=1, job='deployment of residential modules 1 and 2', work_size=15,
-               collaborators='2, 3', start_date='(now)', is_finished=False)
-    session.add(job)
-    session.commit()
+    app.run()
 
 
 if __name__ == '__main__':
     main()
+

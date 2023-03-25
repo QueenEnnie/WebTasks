@@ -50,5 +50,10 @@ def distribution():
     return render_template('distribution.html', crew=people)
 
 
+@app.route("/table")
+def table():
+    return render_template("table.html")
+
+
 if __name__ == '__main__':
     app.run(port=8080, host='127.0.0.1')
