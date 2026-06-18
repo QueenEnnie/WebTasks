@@ -1,34 +1,71 @@
 {% extends "base.html" %}
 
 {% block content %}
-
-<table class="table table-borderless">
-  <thead class="table-secondary">
-    <tr>
-      <th scope="col" class="a">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td colspan="2">Larry the Bird</td>
-      <td>@twitter</td>
-    </tr>
-  </tbody>
-</table>
+    <p></p>
+    <h3 align="center">Оформление каюты</h3>
+    {% if age <= 21  and sex == "male"%}
+        <table class="table table-borderless">
+          <thead class="table-secondary">
+            <tr>
+              <td scope="col" class="alien">Цвет стены</td>
+              <td scope="col" class="alien">Эмблема</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row" class="mini_male"></th>
+              <td align="center"> <img src="/static/img/mini_alien.jpg"
+              alt="здесь должна была быть картинка, но не нашлась"></td>
+            </tr>
+          </tbody>
+        </table>
+    {% elif age > 21  and sex == "male"%}
+        <table class="table table-borderless">
+          <thead class="table-secondary">
+            <tr>
+              <td scope="col" class="alien">Цвет стены</td>
+              <td scope="col" class="alien">Эмблема</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row" class="male"></th>
+              <td align="center"> <img src="/static/img/alien.jpg"
+              alt="здесь должна была быть картинка, но не нашлась"></td>
+            </tr>
+          </tbody>
+        </table>
+    {% elif age <= 21  and sex == "female"%}
+        <table class="table table-borderless">
+          <thead class="table-secondary">
+            <tr>
+              <td scope="col" class="alien">Цвет стены</td>
+              <td scope="col" class="alien">Эмблема</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row" class="mini_female"></th>
+              <td align="center"> <img src="/static/img/mini_alien.jpg"
+              alt="здесь должна была быть картинка, но не нашлась"></td>
+            </tr>
+          </tbody>
+        </table>
+    {% elif age > 21  and sex == "female"%}
+        <table class="table table-borderless">
+          <thead class="table-secondary">
+            <tr>
+              <td scope="col" class="alien">Цвет стены</td>
+              <td scope="col" class="alien">Эмблема</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row" class="female"></th>
+              <td align="center"> <img src="/static/img/alien.jpg"
+              alt="здесь должна была быть картинка, но не нашлась"></td>
+            </tr>
+          </tbody>
+        </table>
+    {% endif %}
 {% endblock %}

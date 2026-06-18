@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+<header class="page-heading">
+    <p class="eyebrow">АРХИВ ИЗОБРАЖЕНИЙ</p>
+    <h1>Марсианская галерея</h1>
+    <p>Материалы из раннего задания по работе со статикой и Bootstrap carousel.</p>
+</header>
+<div class="gallery">
+    {% for image in images %}
+        <figure>
+            <img src="{{ url_for('static', filename='img/' + image) }}" alt="Марсианский пейзаж {{ loop.index }}" loading="lazy">
+            <figcaption>Кадр миссии · {{ '%02d'|format(loop.index) }}</figcaption>
+        </figure>
+    {% endfor %}
+</div>
+{% endblock %}

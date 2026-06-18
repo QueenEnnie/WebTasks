@@ -29,4 +29,4 @@ class User(SqlAlchemyBase):
         self.hashed_password = generate_password_hash(password)
 
     def check_password(self, password):
-        return check_password_hash(self.hashed_password, password)
+        return bool(self.hashed_password) and check_password_hash(self.hashed_password, password)

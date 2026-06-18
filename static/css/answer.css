@@ -39,3 +39,23 @@ td.members{
 td.is_finished{
    width: 100pt;
 }
+
+td.alien{
+   width: 300pt;
+}
+
+th.mini_male{
+    background: #B0E0E6;
+}
+
+th.mini_female{
+    background: #FFA07A;
+}
+
+th.male{
+    background: #0000FF;
+}
+
+th.female{
+    background: #FF6347;
+}

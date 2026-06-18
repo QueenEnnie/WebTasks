@@ -1,34 +1,27 @@
 {% extends "base.html" %}
-
 {% block content %}
-    <p></p>
-    <h2 align="center">Works log</h2>
-    {% for elem in jobs %}
-        <h3>Action # {{elem.id}}</h3>
-        <table class="table table-borderless">
-          <thead class="table-secondary">
-            <tr>
-              <td scope="col" class="title">Title of activity</td>
-              <td scope="col" class="leader">Team leader</td>
-              <td scope="col" class="duration">Duration</td>
-              <td scope="col" class="members">List of collaborators</td>
-              <td scope="col" class="is_finished">Is finished</td>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class="table-secondary">
-              <td scope="row" class="cell">{{elem.job.capitalize()}}</td>
-              <td class="cell">{{users[elem.team_leader]}}</td>
-              <td class="cell">{{elem.work_size}} hours</td>
-              <td class="cell" align="center">{{elem.collaborators}}</td>
-               {% if elem.is_finished == 0%}
-                    <td class="finish">Is not finished</td>
-               {% else %}
-                    <td class="finish">Is finished</td>
-               {% endif %}
-            </tr>
-          </tbody>
-        </table>
-    {% endfor %}
-
+<header class="page-heading">
+    <p class="eyebrow">SQLALCHEMY · SQLITE</p>
+    <h1>Журнал работ миссии</h1>
+    <p>Данные загружаются из учебной базы <code>db/blogs.db</code>.</p>
+</header>
+<div class="work-list">
+{% for job in jobs %}
+    <article class="work-card">
+        <div class="work-number">{{ '%02d'|format(job.id) }}</div>
+        <div class="work-main">
+            <p class="eyebrow">ОПЕРАЦИЯ</p>
+            <h2>{{ job.job|capitalize }}</h2>
+            <p>Руководитель: <strong>{{ users.get(job.team_leader, 'Не назначен') }}</strong></p>
+        </div>
+        <dl class="work-meta">
+            <div><dt>Время</dt><dd>{{ job.work_size }} ч</dd></div>
+            <div><dt>Команда</dt><dd>{{ job.collaborators }}</dd></div>
+            <div><dt>Статус</dt><dd class="status {{ 'done' if job.is_finished else '' }}">{{ 'Завершено' if job.is_finished else 'В работе' }}</dd></div>
+        </dl>
+    </article>
+{% else %}
+    <p class="notice">В журнале пока нет операций.</p>
+{% endfor %}
+</div>
 {% endblock %}
